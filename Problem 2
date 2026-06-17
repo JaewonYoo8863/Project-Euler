@@ -1,0 +1,39 @@
+#problem
+#값이 400만을 초과하지 않는
+#피보나치 수열의 항들 중, 짝수인 항들의 합을 구하시오
+
+#idea
+# 피보나치 구현
+# 피보나치가 짝수인지 확인
+
+#code
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+i = 1
+answer=0
+while fibonacci(i)<=4000000:
+    if fibonacci(i)%2 ==0:
+        answer= answer+fibonacci(i)
+        i+=1
+    else :
+        i+=1
+print(answer)
+
+
+#시행 착오 기록
+#3524578 마지막 print(fibonacci(i))
+#34 35245678이 출력되고 그 다음print(i)
+#0 마지막 print answer 왜 0이 나오자?
+
+# while fibonacci(i)<=4000000:
+#     if fibonacci(i)/2 ==0:
+#         answer= answer+fibonacci(i)
+#         i+=1
+#         print (answer)
+#반복문 중간에 print answer를 넣어봐도 0이 나옴
+
+#아 fibonacci(i)/2 ==0: -> fiboacci(i)%2==0 
