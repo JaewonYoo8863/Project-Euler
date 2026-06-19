@@ -1,0 +1,76 @@
+#problem
+# 13915를 소인수 분해 하면 5,7,13,29 이다
+# 600851475143을 소인수 분해시 가장 큰 소인수는 무엇인가
+
+
+#idea
+#제곱근까지 구하고 짝이 되는 약수를 구할까-> 근데 이건 소수가 아닌거잖아
+#제곱근 전 까지 구하고 그 중에 소수 인 것 이 정답
+#소수 판별도 빠르게 하기 위해 제곱근까지만 검사
+
+
+#code
+def is_prime(num):
+    if num < 2:
+        return False
+
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+
+def find_largest_prime_factor(n):
+    largest_prime = 0
+
+    #n에 1/2를 제곱하기
+    limit = int(n ** 0.5)
+
+    for i in range(2, limit+1):
+        if n % i == 0:
+            if is_prime(i):
+                largest_prime = i
+
+    return largest_prime
+
+
+def main():
+    n = int(input())
+    result = find_largest_prime_factor(n)
+    print(result)
+
+
+if __name__ == "__main__":
+    main()
+
+
+#시행 착오 기록
+# 짝수면 2로 나눠지고
+# 각 자리 수를 모두 더해 3의 배수면 3으로 나눠지고
+# 끝자리가 5면 5로 나눠지고
+# 2,3,5,7,911.13 일일이 다 해보는건 하수고
+# 소수만 리스트를 가지고 있는 파이썬 함수가 있나
+# 없다
+# 소수를 구하는 함수를 만들어서
+# 리스트를 꺼구로 돌려서 나눠지는 것이 정답
+# 전에 소수 구하기 문제 풀어봤을 떄
+# 제곱근을 구해서 그 수가 나눠 떨어지면 소수가 아니다를 기억하는데
+
+# 다시 아이디어 소인수 분해를 해서 그 중 소수 인 것만 추린다
+# 큰 수 부터 소수인지 판별
+
+# def primeList(n):
+#     result = []
+#     for i in range(2, n):
+#         if n % i == 0:
+#             result.append(i)
+#     return result
+#
+# def main():
+#     n = int(input("약수를 구할 숫자를 입력하세요: "))
+#     print(primeList(n))
+#
+# main()
+
+#숫자가 너무 커서 답이 안나옴
+#,,,,,,,,,,,,,,,,,,,,,,,,
