@@ -1,0 +1,32 @@
+"""
+문제:
+6개의 소수를 차례로 랗하면 2,3,5,7,11,13이다
+10001번째 소수는 무엇인가?
+"""
+
+"""
+아이디어:
+일일이 돌려서 10001번째를 찾아야하나 
+"""
+
+def is_prime(n):
+    if n < 2:
+        return False
+
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+
+    return True
+
+
+count = 0
+num = 1
+
+while count < 10001:
+    num += 1
+
+    if is_prime(num):
+        count += 1
+
+print(num)
