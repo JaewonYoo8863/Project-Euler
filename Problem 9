@@ -1,0 +1,32 @@
+"""
+문제:
+피타고라스 정리를 만족하는 a<b<c가 있을 때
+a+b+c=1000 인 abc의 곱을 구하라
+"""
+"""
+아이디어:
+일단 a+b = 1000-c 이거를 피타고라스 공식에 
+대입해서 c를 구한다?
+아니고
+그냥 반복문 돌려서 a,b,c를 구한 뒤 곱하는 것 같은데
+기본 패키지 중에 피탁고라스 패키지가 있나
+없네 피타고라스 정리르 구현해야 할 것 같음
+a,b의 기본값을 줘야하는데 흠...
+1000-c = a,b 
+일단 0<a,b,c,<1000
+"""
+
+def Pythagorean_Triplet(a,b):
+    double_c = a**2 + b**2
+    c = double_c **0.5
+    return c
+
+
+for i in range(1,1000):
+    for j in range(1,1000):
+        if Pythagorean_Triplet(i,j) +i +j == 1000:
+            print(i,j,Pythagorean_Triplet(i,j))
+            print(i*j*Pythagorean_Triplet(i,j))
+            break
+
+
