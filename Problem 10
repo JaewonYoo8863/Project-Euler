@@ -1,0 +1,28 @@
+"""
+문제:
+10보다 작은 소수들의 합은 2+3+5+7=17이다.
+그러면,
+2,000,000보다 작은 모든 소수들의 합을 구하라.
+"""
+"""
+아이다어:
+2000000까지 반복문을 돌리기?
+가장 단순
+소수 찾기 함수 구현 후 반복문
+"""
+
+def is_prime(n):
+    if n < 2:
+        return False
+
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+
+    return True
+sum=0
+for i in range(2, 2000001):
+    if is_prime(i):
+        sum +=i
+
+print(sum)
